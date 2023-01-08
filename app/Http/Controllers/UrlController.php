@@ -15,7 +15,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        //
+        return Url::all();
     }
 
     /**
@@ -36,7 +36,21 @@ class UrlController extends Controller
      */
     public function store(StoreUrlRequest $request)
     {
-        //
+        // $url = new Url();
+
+        // $url->real_url = $request->real_url;
+        // $url->short_url = hash('crc32b', $request->real_url); // generating a hash of the real url for now.
+
+        // return $url->saveOrFail();
+
+
+        // ---------------- The eloquent way ----------------
+        $validated = $request->validated();
+
+        // push the generated short url to validated array
+        $validated['short_url'] = hash('crc32b', $validated['real_url']);
+
+        return Url::create($validated);
     }
 
     /**
