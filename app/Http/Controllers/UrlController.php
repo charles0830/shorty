@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Url;
 use App\Http\Requests\StoreUrlRequest;
 use App\Http\Requests\UpdateUrlRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class UrlController extends Controller
 {
@@ -15,7 +16,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        return Url::all();
+        return Url::latest()->get(['id', 'real_url', 'short_url', 'visits', 'created_at']);
     }
 
     /**
@@ -36,21 +37,7 @@ class UrlController extends Controller
      */
     public function store(StoreUrlRequest $request)
     {
-        // $url = new Url();
-
-        // $url->real_url = $request->real_url;
-        // $url->short_url = hash('crc32b', $request->real_url); // generating a hash of the real url for now.
-
-        // return $url->saveOrFail();
-
-
-        // ---------------- The eloquent way ----------------
-        $validated = $request->validated();
-
-        // push the generated short url to validated array
-        $validated['short_url'] = hash('crc32b', $validated['real_url']);
-
-        return Url::create($validated);
+        return Url::create($request->validated()) ?: response(['message' => 'Something went wrong. Couldn\'t store the URL'], Response::HTTP_NOT_ACCEPTABLE);
     }
 
     /**
@@ -61,7 +48,7 @@ class UrlController extends Controller
      */
     public function show(Url $url)
     {
-        //
+        return $url;
     }
 
     /**
@@ -95,6 +82,6 @@ class UrlController extends Controller
      */
     public function destroy(Url $url)
     {
-        //
+        return $url->deleteOrFail();
     }
 }

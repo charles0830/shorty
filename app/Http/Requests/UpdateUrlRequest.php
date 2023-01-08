@@ -13,7 +13,7 @@ class UpdateUrlRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return request()->ip() === "127.0.0.1";
     }
 
     /**
