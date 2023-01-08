@@ -10,4 +10,4 @@ use App\Http\Controllers\UrlController;
 |--------------------------------------------------------------------------
 */
 
-Route::resource('urls', UrlController::class);
+Route::apiResource('urls', UrlController::class);
