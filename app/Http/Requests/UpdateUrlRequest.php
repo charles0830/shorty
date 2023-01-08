@@ -24,7 +24,14 @@ class UpdateUrlRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'real_url' => 'required|url|active_url',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'real_url' => 'url'
         ];
     }
 }

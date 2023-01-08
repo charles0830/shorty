@@ -27,4 +27,11 @@ class StoreUrlRequest extends FormRequest
             'real_url' => 'required|url|active_url',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'real_url' => 'url'
+        ];
+    }
 }
