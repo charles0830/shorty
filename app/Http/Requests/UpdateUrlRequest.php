@@ -24,7 +24,7 @@ class UpdateUrlRequest extends FormRequest
     public function rules()
     {
         return [
-            'real_url' => 'required|url|active_url',
+            'real_url' => 'required|url',
         ];
     }
 
@@ -40,7 +40,6 @@ class UpdateUrlRequest extends FormRequest
         return [
             'real_url.required' => 'Come one! at least give a URL bruh!',
             'real_url.url' => 'Are you sure it\'s a URL?',
-            'real_url.active_url' => 'Your URL leads to nowhere!',
         ];
     }
 }
