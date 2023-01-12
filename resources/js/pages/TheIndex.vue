@@ -96,7 +96,7 @@
                                 class="w-full p-2 lg:w-1/3 md:w-1/2"
                             >
                                 <div
-                                    class="flex items-center h-full p-4 border border-gray-200 rounded-lg"
+                                    class="flex items-center h-full p-4 transition-all bg-gray-500 rounded-lg shadow-lg cursor-pointer hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
                                 >
                                     <div class="flex-grow">
                                         <h2
@@ -104,8 +104,18 @@
                                         >
                                             {{ excerpt(item.real_url) }}
                                         </h2>
-                                        <p class="text-gray-500">
+                                        <a
+                                            :href="item.short_url"
+                                            target="_blank"
+                                            class="font-bold leading-3 text-gray-200"
+                                        >
                                             {{ item.short_url }}
+                                        </a>
+
+                                        <p
+                                            class="text-sm italic font-medium text-right text-gray-400"
+                                        >
+                                            {{ item.created_at }}
                                         </p>
                                     </div>
                                 </div>
@@ -137,7 +147,11 @@ export default {
                 .post("api/urls", { real_url: this.url })
                 .then((res) => {
                     this.url = ""; // reset the input field
-                    this.items.push(res.data); // collect shortened urls in 'items'
+                    this.items.unshift(res.data); // collect shortened urls in 'items'
+                    this.$notify({
+                        text: "Link shortened successfully!",
+                        type: "success",
+                    });
                 })
                 .catch((err) => {
                     this.errors = err.response.data.errors;
@@ -148,10 +162,10 @@ export default {
             axios
                 .get("/api/urls")
                 .then((res) => {
-                    console.log(res);
+                    this.items = res.data;
                 })
                 .catch((err) => {
-                    console.error(err);
+                    this.errors = err.response.data.errors;
                 });
         },
 
@@ -167,4 +181,6 @@ export default {
     },
 };
 </script>
-<style></style>
+<style>
+
+</style>
