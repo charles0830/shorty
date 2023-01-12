@@ -50,7 +50,7 @@
 
                         <button
                             type="submit"
-                            class="inline-flex px-6 py-4 text-lg font-semibold text-white transition border-0 rounded bg-secondary focus:outline-none hover:bg-secondary hover:brightness-50"
+                            class="inline-flex flex-shrink-0 px-6 py-4 text-lg font-semibold text-white transition border-0 rounded bg-secondary focus:outline-none hover:bg-secondary hover:brightness-50"
                         >
                             Shorten URL
                         </button>
@@ -84,10 +84,10 @@
                             <p
                                 class="mx-auto leading-relaxed text-gray-300 lg:w-2/3"
                             >
-                                Here is your shortened urls. Remember, these are
-                                temporarily shown here. Create an account to
+                                Here are your shortened URLs! Remember, these
+                                are temporarily shown here. Create an account to
                                 manage and see the analytics of your shortened
-                                urls.
+                                URLs.
                             </p>
                         </div>
                         <div class="flex flex-wrap -m-2">
@@ -112,11 +112,36 @@
                                             {{ item.short_url }}
                                         </a>
 
-                                        <p
-                                            class="text-sm italic font-medium text-right text-gray-400"
+                                        <div
+                                            class="flex items-center justify-between gap-3 mt-4"
                                         >
-                                            {{ item.created_at }}
-                                        </p>
+                                            <p
+                                                class="flex-shrink-0 text-sm italic font-medium text-right text-gray-500"
+                                            >
+                                                {{ item.created_at }}
+                                            </p>
+
+                                            <!-- Delete button -->
+                                            <button
+                                                @click="destroy(item)"
+                                                class="p-1 text-center transition rounded hover:bg-gray-700"
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    class="w-6 h-6 text-red-600"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +174,7 @@ export default {
                     this.url = ""; // reset the input field
                     this.items.unshift(res.data); // collect shortened urls in 'items'
                     this.$notify({
-                        text: "Link shortened successfully!",
+                        text: "The URL shortened successfully!",
                         type: "success",
                     });
                 })
@@ -160,13 +185,34 @@ export default {
 
         fetchData() {
             axios
-                .get("/api/urls")
+                .get("api/urls")
                 .then((res) => {
                     this.items = res.data;
                 })
                 .catch((err) => {
                     this.errors = err.response.data.errors;
                 });
+        },
+
+        destroy(item) {
+            if (confirm("Are you sure bruh?")) {
+                // send the delete request
+                axios
+                    .delete(`api/urls/${item.short_url}`)
+                    .then(() => {
+                        // filter out the deleted item from "items" and display toast
+                        this.items = this.items.filter((i) => i.id !== item.id);
+                        this.$notify({
+                            text: "The shortened URL has been deleted!",
+                        });
+                    })
+                    .catch((err) => {
+                        this.$notify({
+                            text: err.response.data.errors[0],
+                            type: "danger",
+                        });
+                    });
+            }
         },
 
         excerpt(str, limit = 37) {
@@ -181,6 +227,4 @@ export default {
     },
 };
 </script>
-<style>
-
-</style>
+<style></style>
