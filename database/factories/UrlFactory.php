@@ -17,7 +17,8 @@ class UrlFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "real_url" => fake()->url(),
+            "visits" => fake()->numberBetween(0, 9999),
         ];
     }
 }
