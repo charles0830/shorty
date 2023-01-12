@@ -207,10 +207,17 @@ export default {
                         });
                     })
                     .catch((err) => {
-                        this.$notify({
-                            text: err.response.data.errors[0],
-                            type: "danger",
-                        });
+                        if (err.hasOwnProperty("message")) {
+                            this.$notify({
+                                text: err.message,
+                                type: "error",
+                            });
+                        } else {
+                            this.$notify({
+                                text: "Hmmm...Something went fishy!",
+                                type: "error",
+                            });
+                        }
                     });
             }
         },
