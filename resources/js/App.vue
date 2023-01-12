@@ -5,7 +5,6 @@
         <AppHeader></AppHeader>
         <main class="min-h-screen md:grid md:place-items-center">
             <router-view></router-view>
-            <!-- <TheIndex /> -->
         </main>
         <AppFooter></AppFooter>
     </div>

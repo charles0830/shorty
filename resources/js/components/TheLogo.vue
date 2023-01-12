@@ -1,9 +1,8 @@
 <template>
-    <a
-        href="/"
+    <router-link
+        to="/"
         class="flex items-center mb-4 font-medium title-font text-primary md:mb-0"
-    >
-        <svg
+        ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -18,8 +17,8 @@
             />
         </svg>
 
-        <span class="ml-3 text-xl font-bold">Shorty</span>
-    </a>
+        <span class="ml-3 text-xl font-bold">Shorty</span></router-link
+    >
 </template>
 
 <script>
