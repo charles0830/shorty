@@ -34,6 +34,7 @@
                                 type="text"
                                 id="FirstName"
                                 name="first_name"
+                                v-model="form.first_name"
                                 class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
                             />
                         </div>
@@ -50,6 +51,7 @@
                                 type="text"
                                 id="LastName"
                                 name="last_name"
+                                v-model="form.last_name"
                                 class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
                             />
                         </div>
@@ -66,6 +68,7 @@
                                 type="email"
                                 id="Email"
                                 name="email"
+                                v-model="form.email"
                                 class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
                             />
                         </div>
@@ -82,6 +85,7 @@
                                 type="password"
                                 id="Password"
                                 name="password"
+                                v-model="form.password"
                                 class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
                             />
                         </div>
@@ -98,6 +102,7 @@
                                 type="password"
                                 id="PasswordConfirmation"
                                 name="password_confirmation"
+                                v-model="form.password_confirmation"
                                 class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
                             />
                         </div>

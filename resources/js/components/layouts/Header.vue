@@ -2,20 +2,20 @@
     <div>
         <header class="text-gray-100 body-font">
             <div
-                class="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row"
+                class="container flex flex-row flex-wrap items-center p-5 mx-auto"
             >
-                <TheLogo />
+                <TheLogo class="flex-grow" />
                 <nav
                     class="flex flex-wrap items-center justify-center text-base md:ml-auto"
                 >
-                    <router-link
+                    <!-- <router-link
                         to="/"
                         class="mr-6 cursor-pointer hover:text-secondary"
                         >Home</router-link
-                    >
+                    > -->
                 </nav>
 
-                <div class="flex gap-2">
+                <div class="flex items-center gap-2">
                     <router-link
                         to="/login"
                         class="inline-flex items-center px-3 py-1 mt-4 text-white border-0 rounded bg-secondary focus:outline-none hover:bg-primary md:mt-0"
@@ -23,7 +23,7 @@
                     >
                     <router-link
                         to="/signup"
-                        class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-secondary hover:border-transparent focus:outline-none md:mt-0"
+                        class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0"
                         >Signup</router-link
                     >
                 </div>

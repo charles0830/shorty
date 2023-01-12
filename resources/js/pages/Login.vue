@@ -10,8 +10,10 @@
 
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">
-            <h1 class="text-center text-2xl font-bold text-primary sm:text-3xl">
-                Get started today
+            <h1
+                class="text-center text-2xl font-bold text-secondary sm:text-4xl"
+            >
+                Get <span class="text-success">Started</span> Today
             </h1>
 
             <p class="mx-auto mt-4 max-w-md text-center text-gray-300">
@@ -28,10 +30,10 @@
 
                     <div class="relative mt-1">
                         <input
-                            v-bind="form.email"
+                            v-model="form.email"
                             type="email"
                             id="email"
-                            class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                            class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
                             placeholder="Enter email"
                         />
                     </div>
@@ -44,10 +46,10 @@
 
                     <div class="relative mt-1">
                         <input
-                            v-bind="form.password"
+                            v-model="form.password"
                             type="password"
                             id="password"
-                            class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                            class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
                             placeholder="Enter password"
                         />
                     </div>
@@ -55,7 +57,7 @@
 
                 <button
                     type="submit"
-                    class="block w-full rounded-lg bg-secondary hover:bg-primary hover:brightness-50 transition-all px-5 py-3 text-sm font-medium text-white"
+                    class="block w-full rounded-lg bg-primary hover:bg-success transition-all px-5 py-3 text-lg font-medium text-white"
                 >
                     Sign In
                 </button>

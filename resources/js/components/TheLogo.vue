@@ -1,7 +1,7 @@
 <template>
     <router-link
         to="/"
-        class="flex items-center mb-4 font-medium title-font text-primary md:mb-0"
+        class="flex items-center mt-2 sm:mt-auto font-medium title-font text-primary md:mb-0"
         ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
