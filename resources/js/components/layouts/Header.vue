@@ -2,10 +2,11 @@
     <div>
         <header class="text-gray-100 body-font">
             <div
-                class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+                class="container flex flex-col flex-wrap items-center p-5 mx-auto md:flex-row"
             >
                 <a
-                    class="flex title-font font-medium items-center text-primary mb-4 md:mb-0"
+                    href="/"
+                    class="flex items-center mb-4 font-medium title-font text-primary md:mb-0"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -25,24 +26,24 @@
                     <span class="ml-3 text-xl font-bold">Shorty</span>
                 </a>
                 <nav
-                    class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+                    class="flex flex-wrap items-center justify-center text-base md:ml-auto"
                 >
-                    <a class="mr-6 hover:text-secondary cursor-pointer"
-                        >First Link</a
+                    <a href="/" class="mr-6 cursor-pointer hover:text-secondary"
+                        >Home</a
                     >
                 </nav>
 
                 <div class="flex gap-2">
                     <a
                         href=""
-                        class="inline-flex items-center bg-secondary border-0 py-1 px-3 focus:outline-none hover:bg-primary rounded text-white mt-4 md:mt-0"
+                        class="inline-flex items-center px-3 py-1 mt-4 text-white border-0 rounded bg-secondary focus:outline-none hover:bg-primary md:mt-0"
                     >
                         Login
                     </a>
 
                     <a
                         href=""
-                        class="inline-flex items-center border border-white hover:bg-secondary hover:border-transparent py-1 px-3 focus:outline-none rounded text-white mt-4 md:mt-0"
+                        class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-secondary hover:border-transparent focus:outline-none md:mt-0"
                     >
                         Signup
                     </a>
