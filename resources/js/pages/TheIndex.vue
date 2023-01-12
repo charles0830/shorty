@@ -142,6 +142,7 @@
                                                 class="flex flex-shrink-0 gap-2 font-medium text-right text-gray-500 talic space-bet"
                                             >
                                                 <span
+                                                    v-if="item.visits"
                                                     class="flex gap-1 pr-2 border-r border-r-gray-700"
                                                 >
                                                     <svg

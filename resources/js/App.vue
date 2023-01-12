@@ -3,7 +3,7 @@
         <notifications position="bottom right" />
 
         <AppHeader></AppHeader>
-        <main class="min-h-screen">
+        <main class="min-h-screen md:grid md:place-items-center">
             <TheIndex />
         </main>
         <AppFooter></AppFooter>
