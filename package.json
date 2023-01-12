@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@kyvg/vue3-notification": "^2.7.0",
+        "@tailwindcss/forms": "^0.5.3",
         "vue-router": "^4.1.6"
     }
 }

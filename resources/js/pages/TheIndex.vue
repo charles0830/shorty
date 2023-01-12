@@ -96,7 +96,7 @@
                                 class="w-full p-2 lg:w-1/3 md:w-1/2"
                             >
                                 <div
-                                    class="flex items-center h-full p-4 break-all transition-all bg-gray-500 rounded-lg shadow-lg cursor-pointer hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
+                                    class="flex items-center h-full p-4 break-all transition-all bg-gray-500 rounded-lg shadow-lg cursor-auto hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
                                 >
                                     <div class="flex-grow">
                                         <a :href="item.real_url"
@@ -107,7 +107,7 @@
                                             </h2></a
                                         >
                                         <a
-                                            :href="item.short_url"
+                                            :href="`u/${item.short_url}`"
                                             target="_blank"
                                             class="flex items-start gap-2 my-3"
                                         >

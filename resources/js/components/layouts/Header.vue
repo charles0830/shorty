@@ -22,7 +22,7 @@
                         >Login</router-link
                     >
                     <router-link
-                        to="/login"
+                        to="/signup"
                         class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-secondary hover:border-transparent focus:outline-none md:mt-0"
                         >Signup</router-link
                     >

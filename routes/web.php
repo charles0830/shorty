@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
+Route::get('u/{url}', [UrlController::class, 'show']);
 
-Route::get('{url}', [UrlController::class, 'show']);
+Route::view('/{any}', 'welcome')->where('any', '.*'); // route for SPA
