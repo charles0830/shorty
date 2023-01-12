@@ -4,7 +4,8 @@
 
         <AppHeader></AppHeader>
         <main class="min-h-screen md:grid md:place-items-center">
-            <TheIndex />
+            <router-view></router-view>
+            <!-- <TheIndex /> -->
         </main>
         <AppFooter></AppFooter>
     </div>
@@ -12,14 +13,13 @@
 <script>
 import AppHeader from "./components/layouts/Header.vue";
 import AppFooter from "./components/layouts/Footer.vue";
-import TheIndex from "./pages/TheIndex.vue";
 
 export default {
     data() {
         return {};
     },
 
-    components: { AppHeader, AppFooter, TheIndex },
+    components: { AppHeader, AppFooter },
 };
 </script>
 <style>

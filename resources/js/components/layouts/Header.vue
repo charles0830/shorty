@@ -8,25 +8,24 @@
                 <nav
                     class="flex flex-wrap items-center justify-center text-base md:ml-auto"
                 >
-                    <a href="/" class="mr-6 cursor-pointer hover:text-secondary"
-                        >Home</a
+                    <router-link
+                        to="/"
+                        class="mr-6 cursor-pointer hover:text-secondary"
+                        >Home</router-link
                     >
                 </nav>
 
                 <div class="flex gap-2">
-                    <a
-                        href=""
+                    <router-link
+                        to="/login"
                         class="inline-flex items-center px-3 py-1 mt-4 text-white border-0 rounded bg-secondary focus:outline-none hover:bg-primary md:mt-0"
+                        >Login</router-link
                     >
-                        Login
-                    </a>
-
-                    <a
-                        href=""
+                    <router-link
+                        to="/login"
                         class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-secondary hover:border-transparent focus:outline-none md:mt-0"
+                        >Signup</router-link
                     >
-                        Signup
-                    </a>
                 </div>
             </div>
         </header>
