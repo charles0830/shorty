@@ -39,7 +39,10 @@ class UrlController extends Controller
      */
     public function show(Url $url)
     {
-        return $url;
+        // increment the url visits before redirecting
+        $url->increment('visits');
+
+        return redirect($url->real_url);
     }
 
 

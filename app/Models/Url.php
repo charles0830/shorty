@@ -23,7 +23,7 @@ class Url extends Model
 
         // Generate a 10 digit random string for short url before creating
         static::creating(function ($url) {
-            $url->short_url = str()->random(10);
+            $url->short_url = str()->random(6);
         });
     }
 
@@ -42,6 +42,13 @@ class Url extends Model
     {
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->diffForHumans()
+        );
+    }
+
+    protected function visits(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => number_format($value)
         );
     }
 }
