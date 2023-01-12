@@ -12,7 +12,7 @@
                         class="mb-4 text-3xl font-bold title-font sm:text-6xl text-secondary"
                     >
                         Shorten your
-                        <span class="text-primary">loooooong</span> URLs like
+                        <span class="text-success">loooooong</span> URLs like
                         never before!
                     </h1>
                     <p class="mb-8 leading-relaxed">
@@ -43,7 +43,7 @@
                                 id="long-url"
                                 name="url"
                                 v-model="url"
-                                class="w-full px-6 py-3 text-lg leading-8 text-gray-100 transition-colors duration-200 ease-in-out bg-gray-700 bg-opacity-50 border border-gray-300 rounded-md shadow-2xl outline-none focus:ring-2 focus:ring-primary focus:bg-transparent focus:border-primary"
+                                class="w-full px-4 py-3 text-lg leading-8 text-gray-100 transition-colors duration-200 ease-in-out bg-gray-700 border-transparent rounded-md shadow-2xl outline-none border-y focus:border border-t-gray-600 focus:ring-2 focus:ring-primary focus:bg-transparent focus:border-primary"
                                 placeholder="https://yoursite.com/this-is-a-very-large-url-but-boring-and-it-stinks-yaak?query=true&isItFun=false"
                             />
                         </div>
@@ -70,14 +70,17 @@
                 </div>
 
                 <!-- The result -->
-                <section v-if="items" class="text-gray-600 body-font">
+                <section
+                    v-if="items.length > 0"
+                    class="text-gray-600 body-font"
+                >
                     <div class="container px-5 py-24 mx-auto">
                         <div class="flex flex-col w-full mb-20 text-center">
-                            <h1
-                                class="mb-4 text-2xl font-medium text-white sm:text-4xl title-font"
+                            <h2
+                                class="mb-4 text-2xl font-bold text-success sm:text-5xl title-font"
                             >
                                 Hoho!
-                            </h1>
+                            </h2>
                             <p
                                 class="mx-auto leading-relaxed text-gray-300 lg:w-2/3"
                             >
@@ -147,6 +150,10 @@ export default {
     },
 
     computed: {},
+
+    mounted() {
+        
+    },
 };
 </script>
 <style></style>

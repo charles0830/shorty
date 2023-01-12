@@ -2,10 +2,10 @@
     <div>
         <footer class="text-primary body-font">
             <div
-                class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+                class="container flex flex-col items-center px-5 py-8 mx-auto sm:flex-row"
             >
                 <a
-                    class="flex title-font font-medium items-center md:justify-start justify-center text-primary"
+                    class="flex items-center justify-center font-medium title-font md:justify-start text-primary"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -14,29 +14,29 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                        class="w-10 h-10 p-2 text-white bg-indigo-500 rounded-full"
                         viewBox="0 0 24 24"
                     >
                         <path
                             d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
                         ></path>
                     </svg>
-                    <span class="ml-3 text-xl">Shory</span>
+                    <span class="ml-3 text-xl">{{ APP_NAME }}</span>
                 </a>
                 <p
-                    class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+                    class="mt-4 text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0"
                 >
-                    © {{ thisYear }} Shorty —
+                    © {{ thisYear }} {{ APP_NAME }} —
                     <a
                         href="https://github.com/alnahian2003"
-                        class="text-secondary ml-1"
+                        class="ml-1 text-secondary"
                         rel="noopener noreferrer"
                         target="_blank"
                         >@alnahian2003</a
                     >
                 </p>
                 <span
-                    class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+                    class="inline-flex justify-center mt-4 sm:ml-auto sm:mt-0 sm:justify-start"
                 >
                     <a class="text-white">
                         <svg
@@ -76,7 +76,9 @@
 export default {
     name: "AppFooter",
     data() {
-        return {};
+        return {
+            APP_NAME: "Shorty",
+        };
     },
 
     computed: {
