@@ -21,14 +21,14 @@
                             class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm"
                         >
                             Hi,
-                            <span class="text-success">{{
+                            <span class="text-primary">{{
                                 excerpt(user.name, 15)
                             }}</span>
                         </span>
 
                         <button
                             @click="logout()"
-                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0 select-none"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-primary hover:border-transparent focus:outline-none md:mt-0 select-none"
                         >
                             Logout
                         </button>
@@ -41,7 +41,7 @@
                         >
                         <router-link
                             to="/signup"
-                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0 select-none"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-primary hover:border-transparent focus:outline-none md:mt-0 select-none"
                             >Signup</router-link
                         >
                     </div>

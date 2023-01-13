@@ -16,7 +16,7 @@
                 </p>
                 <router-link
                     to="/"
-                    class="px-8 py-3 font-semibold rounded bg-success text-gray-900"
+                    class="px-8 py-3 font-semibold rounded bg-primary text-gray-900"
                     >Back to homepage</router-link
                 >
             </div>

@@ -12,7 +12,7 @@
                         class="mb-4 text-3xl font-bold title-font sm:text-6xl text-secondary"
                     >
                         Shorten your
-                        <span class="text-success">loooooong</span> URLs like
+                        <span class="text-primary">loooooong</span> URLs like
                         never before!
                     </h1>
                     <p class="mb-8 leading-relaxed">
@@ -73,17 +73,15 @@
                     <div class="container px-5 py-24 mx-auto">
                         <div class="flex flex-col w-full mb-10 text-center">
                             <h2
-                                class="mb-4 text-2xl font-bold text-success sm:text-5xl title-font"
+                                class="mb-4 text-2xl font-bold text-primary sm:text-5xl title-font"
                             >
                                 Hoho!
                             </h2>
                             <p
                                 class="mx-auto leading-relaxed text-gray-300 lg:w-2/3"
                             >
-                                Here are your shortened URLs! Remember, these
-                                are temporarily shown here. Create an account to
-                                manage and see the analytics of your shortened
-                                URLs.
+                                Here are your shortened URLs! Now start
+                                rick-rolling your friends 😆
                             </p>
                         </div>
                         <div class="flex flex-wrap -m-2">
@@ -108,7 +106,7 @@
                                             class="flex items-start gap-2 my-3"
                                         >
                                             <p
-                                                class="font-bold leading-3 text-success"
+                                                class="font-bold leading-3 text-primary"
                                             >
                                                 {{ pretty_url(item.short_url) }}
                                             </p>

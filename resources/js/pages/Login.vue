@@ -13,7 +13,7 @@
             <h1
                 class="text-center text-2xl font-bold text-secondary sm:text-4xl"
             >
-                Get <span class="text-success">Started</span> Today
+                Get <span class="text-primary">Started</span> Today
             </h1>
 
             <p class="mx-auto mt-4 max-w-md text-center text-gray-300">
@@ -59,14 +59,14 @@
 
                 <button
                     type="submit"
-                    class="block w-full rounded-lg bg-primary hover:bg-success transition-all px-5 py-3 text-lg font-medium text-white"
+                    class="block w-full rounded-lg bg-primary hover:bg-secondary transition-all px-5 py-3 text-lg font-medium text-white"
                 >
                     Sign In
                 </button>
 
                 <p class="text-center text-sm text-gray-400">
                     No account?
-                    <router-link class="text-success" to="/signup"
+                    <router-link class="text-primary" to="/signup"
                         >Sign Up</router-link
                     >
                 </p>
