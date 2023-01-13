@@ -22,4 +22,13 @@ const app = createApp(App);
 app.use(Notifications);
 app.use(router);
 
+// Make the excerpt method available globally
+app.mixin({
+    methods: {
+        excerpt(str, limit = 37) {
+            return str.length > limit ? str.slice(0, limit) + "..." : str;
+        },
+    },
+});
+
 app.mount("#app");

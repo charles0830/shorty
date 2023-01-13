@@ -16,6 +16,15 @@
                 </nav>
 
                 <div class="flex items-center gap-2">
+                    <span
+                        class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm"
+                    >
+                        Hi,
+                        <span class="text-success">{{
+                            excerpt("Al Nahian", 15)
+                        }}</span>
+                    </span>
+
                     <button
                         v-if="loggedIn"
                         @click="logout()"

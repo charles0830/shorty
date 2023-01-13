@@ -272,10 +272,6 @@ export default {
                     });
             }
         },
-
-        excerpt(str, limit = 37) {
-            return str.length > limit ? str.slice(0, limit) + "..." : str;
-        },
     },
 
     computed: {},
