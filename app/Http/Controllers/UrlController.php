@@ -16,7 +16,9 @@ class UrlController extends Controller
      */
     public function index()
     {
-        return Url::latest()->get(['id', 'real_url', 'short_url', 'visits', 'created_at']);
+        return auth()->user()->urls;
+        // return Url::latest()
+        //     ->get(['id', 'real_url', 'short_url', 'visits', 'created_at']);
     }
 
 
@@ -28,7 +30,10 @@ class UrlController extends Controller
      */
     public function store(StoreUrlRequest $request)
     {
-        return Url::create($request->validated()) ?: response(['message' => 'Something went wrong. Couldn\'t store the URL'], Response::HTTP_NOT_ACCEPTABLE);
+        return auth()
+            ->user()
+            ->urls()
+            ->create($request->validated()) ?: response(['message' => 'Something went wrong. Couldn\'t store the URL'], Response::HTTP_NOT_ACCEPTABLE);
     }
 
     /**

@@ -16,5 +16,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post("logout", [LoginController::class, 'logout']);
 });
 
+Route::apiResource('urls', UrlController::class);
 
 Route::view('/{any}', 'welcome')->where('any', '.*'); // route for SPA | Always should be at the bottom

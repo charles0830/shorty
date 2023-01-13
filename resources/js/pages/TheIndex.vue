@@ -16,17 +16,11 @@
                         never before!
                     </h1>
                     <p class="mb-8 leading-relaxed">
-                        Copy the boring long url, Paste it here then 💥 Feel
-                        free to
-                        <router-link
-                            :to="{ name: 'Signup' }"
-                            class="font-semibold text-secondary"
-                            >Signup</router-link
-                        >
-                        and manage all your links now. It's free!
+                        Copy your long boring url. Paste it below. Then 💥 You
+                        got it, right?
                     </p>
 
-                    <!-- Quick Shortener Form -->
+                    <!-- URL Shortener Form -->
                     <form
                         @submit.prevent="shorten"
                         class="flex items-end justify-center w-full"
@@ -207,6 +201,8 @@
 </template>
 <script>
 export default {
+    middleware: "auth",
+
     name: "Index",
     data() {
         return {
@@ -222,7 +218,7 @@ export default {
         shorten() {
             // Store the url using axios
             axios
-                .post("api/urls", { real_url: this.url })
+                .post("urls", { real_url: this.url })
                 .then((res) => {
                     this.url = ""; // reset the input field
                     this.items.unshift(res.data); // collect shortened urls in 'items'
@@ -238,7 +234,7 @@ export default {
 
         fetchData() {
             axios
-                .get("api/urls")
+                .get("urls")
                 .then((res) => {
                     this.items = res.data;
                 })
@@ -251,7 +247,7 @@ export default {
             if (confirm("Are you sure bruh?")) {
                 // send the delete request
                 axios
-                    .delete(`api/urls/${item.short_url}`)
+                    .delete(`urls/${item.short_url}`)
                     .then(() => {
                         // filter out the deleted item from "items" and display toast
                         this.items = this.items.filter((i) => i.id !== item.id);

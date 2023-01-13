@@ -13,6 +13,7 @@ class Url extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'real_url',
         'short_url'
     ];
@@ -43,6 +44,11 @@ class Url extends Model
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->diffForHumans()
         );
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**

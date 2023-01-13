@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class UrlFactory extends Factory
     public function definition()
     {
         return [
+            "user_id" => User::factory()->create(),
             "real_url" => fake()->url(),
             "visits" => fake()->numberBetween(0, 9999),
         ];
