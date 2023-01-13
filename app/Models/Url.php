@@ -58,10 +58,11 @@ class Url extends Model
     //     );
     // }
 
-    protected function visits(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => number_format($value)
-        );
-    }
+    /* This one too... gotta handle it from front end */
+    // protected function visits(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => number_format($value)
+    //     );
+    // }
 }

@@ -168,7 +168,7 @@
                                                     </svg>
 
                                                     <strong>{{
-                                                        item.visits
+                                                        item.visits.toLocaleString()
                                                     }}</strong>
                                                 </span>
                                                 {{ item.created_at }}

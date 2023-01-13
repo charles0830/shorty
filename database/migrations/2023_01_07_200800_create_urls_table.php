@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->text("real_url");
             $table->string("short_url")->unique();
             $table->unsignedBigInteger("visits")->default(0);
