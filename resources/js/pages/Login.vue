@@ -35,6 +35,7 @@
                             id="email"
                             class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
                             placeholder="Enter email"
+                            required
                         />
                     </div>
                 </div>
@@ -51,6 +52,7 @@
                             id="password"
                             class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
                             placeholder="Enter password"
+                            required
                         />
                     </div>
                 </div>
@@ -86,7 +88,22 @@ export default {
 
     methods: {
         login() {
-            console.log("proceed to login the user");
+            axios
+                .post("/login", this.form)
+                .then(() => {
+                    // First redirect then notify
+                    window.location = "/";
+                    this.$notify({
+                        text: "Great! Welcome Back 👋🏼",
+                        type: "success",
+                    });
+                })
+                .catch(() => {
+                    this.$notify({
+                        text: "Something went wrong!",
+                        type: "error",
+                    });
+                });
         },
     },
 };

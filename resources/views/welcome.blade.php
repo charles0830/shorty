@@ -9,6 +9,9 @@
 
     @vite(['resources/js/app.js'])
 
+    <script>
+        window.loggedIn = {{ auth()->check() }}
+    </script>
 </head>
 
 <body class="antialiased bg-gray-900 text-white">
