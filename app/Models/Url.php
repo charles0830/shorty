@@ -48,14 +48,15 @@ class Url extends Model
     /**
      * pass the shorten url with app url
      *
+     * This method works but conflicts while DELETing the model. So it's off now.
      * @return Attribute
      **/
-    protected function shortUrl(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => url(route("shortened", $value))
-        );
-    }
+    // protected function shortUrl(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => url(route("shortened", $value))
+    //     );
+    // }
 
     protected function visits(): Attribute
     {
