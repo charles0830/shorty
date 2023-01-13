@@ -28,6 +28,11 @@ app.mixin({
         excerpt(str, limit = 37) {
             return str.length > limit ? str.slice(0, limit) + "..." : str;
         },
+
+        // return the shortened url code with base url joined
+        pretty_url(short_url) {
+            return `${window.location.origin}/${short_url}`;
+        },
     },
 });
 

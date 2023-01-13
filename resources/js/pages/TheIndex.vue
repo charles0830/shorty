@@ -116,7 +116,7 @@
                                             <p
                                                 class="font-bold leading-3 text-success"
                                             >
-                                                {{ item.short_url }}
+                                                {{ pretty_url(item.short_url) }}
                                             </p>
                                             <span
                                                 ><svg
