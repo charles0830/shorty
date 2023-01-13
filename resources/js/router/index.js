@@ -36,9 +36,10 @@ router.beforeEach((to, from) => {
 
     /*
     Scenario: 
-    An authenticated user is trying to access a protected component/page.
-    So we're checking the middleware first then validating the logged instate of the user.
-    If the user is logged out, then we'll redirect them to login/signup page
+    An authenticated user is trying to access a public component/page which
+    should logically be accessible for unauthenticated users only.
+    So we're checking the middleware first then validating the logged in state of the user.
+    If the user is logged in, then we'll redirect them to homepage
     */
     if (middleware === "guest") {
         if (window.loggedIn) {
@@ -49,7 +50,7 @@ router.beforeEach((to, from) => {
     /*
     Scenario: 
     An unauthenticated user is trying to access a protected component/page.
-    So we're checking the middleware first then validating the logged instate of the user.
+    So we're checking the middleware first then validating the logged in state of the user.
     If the user is logged out, then we'll redirect them to login/signup page
     */
     if (middleware === "auth" && !window.loggedIn) {
