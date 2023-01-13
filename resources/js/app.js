@@ -32,3 +32,7 @@ app.mixin({
 });
 
 app.mount("#app");
+
+/* 
+TODO: Form validation for signup and login 
+*/

@@ -10,7 +10,8 @@
     @vite(['resources/js/app.js'])
 
     <script>
-        window.loggedIn = {{ auth()->check() }}
+        window.loggedIn = @json(auth()->check());
+        window.user = @json(auth()->user());
     </script>
 </head>
 

@@ -22,13 +22,13 @@
                         >
                             Hi,
                             <span class="text-success">{{
-                                excerpt("Al Nahian", 15)
+                                excerpt(user.name, 15)
                             }}</span>
                         </span>
 
                         <button
                             @click="logout()"
-                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0 select-none"
                         >
                             Logout
                         </button>
@@ -36,12 +36,12 @@
                     <div v-else class="flex items-center gap-2">
                         <router-link
                             to="/login"
-                            class="inline-flex items-center px-3 py-1 mt-4 text-white border-0 rounded bg-secondary focus:outline-none hover:bg-primary md:mt-0"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border-0 rounded bg-secondary focus:outline-none hover:bg-primary md:mt-0 select-none"
                             >Login</router-link
                         >
                         <router-link
                             to="/signup"
-                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0 select-none"
                             >Signup</router-link
                         >
                     </div>
@@ -59,6 +59,7 @@ export default {
     data() {
         return {
             loggedIn: window.loggedIn,
+            user: window.user,
         };
     },
 
