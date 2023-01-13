@@ -18,8 +18,10 @@
                     <p class="mb-8 leading-relaxed">
                         Copy the boring long url, Paste it here then 💥 Feel
                         free to
-                        <a href="" class="font-semibold text-secondary"
-                            >Signup</a
+                        <router-link
+                            :to="{ name: 'Signup' }"
+                            class="font-semibold text-secondary"
+                            >Signup</router-link
                         >
                         and manage all your links now. It's free!
                     </p>

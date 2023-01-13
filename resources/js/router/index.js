@@ -47,10 +47,8 @@ router.beforeEach((to, from) => {
     So we're checking the middleware first then validating the logged in state of the user.
     If the user is logged in, then we'll redirect them to homepage
     */
-    if (middleware === "guest") {
-        if (window.loggedIn) {
-            return { name: "TheIndex" };
-        }
+    if (middleware === "guest" && window.loggedIn) {
+        return { name: "TheIndex" };
     }
 
     /*
