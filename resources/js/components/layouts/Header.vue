@@ -16,22 +16,23 @@
                 </nav>
 
                 <div class="flex items-center gap-2">
-                    <span
-                        class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm"
-                    >
-                        Hi,
-                        <span class="text-success">{{
-                            excerpt("Al Nahian", 15)
-                        }}</span>
-                    </span>
+                    <div v-if="loggedIn">
+                        <span
+                            class="whitespace-nowrap rounded-full px-2.5 py-0.5 text-sm"
+                        >
+                            Hi,
+                            <span class="text-success">{{
+                                excerpt("Al Nahian", 15)
+                            }}</span>
+                        </span>
 
-                    <button
-                        v-if="loggedIn"
-                        @click="logout()"
-                        class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0"
-                    >
-                        Logout
-                    </button>
+                        <button
+                            @click="logout()"
+                            class="inline-flex items-center px-3 py-1 mt-4 text-white border border-white rounded hover:bg-success hover:border-transparent focus:outline-none md:mt-0"
+                        >
+                            Logout
+                        </button>
+                    </div>
                     <div v-else class="flex items-center gap-2">
                         <router-link
                             to="/login"

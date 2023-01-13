@@ -45,6 +45,18 @@ class Url extends Model
         );
     }
 
+    /**
+     * pass the shorten url with app url
+     *
+     * @return Attribute
+     **/
+    protected function shortUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => url($value)
+        );
+    }
+
     protected function visits(): Attribute
     {
         return Attribute::make(

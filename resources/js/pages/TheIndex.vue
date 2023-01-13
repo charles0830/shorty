@@ -101,7 +101,7 @@
                                     <div class="flex-grow">
                                         <a :href="item.real_url"
                                             ><h2
-                                                class="font-medium text-secondary title-font"
+                                                class="font-medium text-gray-200 title-font"
                                             >
                                                 {{ excerpt(item.real_url) }}
                                             </h2></a
@@ -112,7 +112,7 @@
                                             class="flex items-start gap-2 my-3"
                                         >
                                             <p
-                                                class="font-bold leading-3 text-gray-200"
+                                                class="font-bold leading-3 text-success"
                                             >
                                                 {{ item.short_url }}
                                             </p>
