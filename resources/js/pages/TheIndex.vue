@@ -109,7 +109,7 @@
                                             </h2></a
                                         >
                                         <a
-                                            :href="`u/${item.short_url}`"
+                                            :href="pretty_url(item.short_url)"
                                             target="_blank"
                                             class="flex items-start gap-2 my-3"
                                         >

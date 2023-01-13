@@ -31,7 +31,7 @@ app.mixin({
 
         // return the shortened url code with base url joined
         pretty_url(short_url) {
-            return `${window.location.origin}/${short_url}`;
+            return `${window.location.origin}/u/${short_url}`;
         },
     },
 });
