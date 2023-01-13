@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::view('/', 'welcome');
-Route::get('u/{url}', [UrlController::class, 'show']);
+Route::get('u/{url}', [UrlController::class, 'show'])->name("shortened");
 
 Route::post('signup', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);

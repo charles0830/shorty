@@ -53,7 +53,7 @@ class Url extends Model
     protected function shortUrl(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => url($value)
+            get: fn ($value) => url(route("shortened", $value))
         );
     }
 
