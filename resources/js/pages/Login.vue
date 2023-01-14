@@ -1,13 +1,4 @@
 <template>
-    <!--
-  This component uses @tailwindcss/forms
-
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
-
-  plugins: [require('@tailwindcss/forms')]
--->
-
     <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg">
             <h1
@@ -57,6 +48,12 @@
                     </div>
                 </div>
 
+                <router-link
+                    class="text-primary font-semibold block text-right hover:underline"
+                    :to="{ name: 'ForgotPassword' }"
+                    >Forgot Password?</router-link
+                >
+
                 <button
                     type="submit"
                     class="block w-full rounded-lg bg-primary hover:bg-secondary transition-all px-5 py-3 text-lg font-medium text-white"
@@ -75,7 +72,7 @@
     </div>
 </template>
 
-<script>
+<script type="js">
 export default {
     middleware: "guest",
     data() {

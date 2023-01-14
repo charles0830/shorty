@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import TheIndex from "../pages/TheIndex.vue";
 import Login from "../pages/Login.vue";
 import Signup from "../pages/Signup.vue";
+import ForgotPassword from "../pages/ForgotPassword.vue";
 import NotFound from "../pages/404.vue";
 
 const routes = [
@@ -19,6 +20,11 @@ const routes = [
         path: "/signup",
         name: "Signup",
         component: Signup,
+    },
+    {
+        path: "/forgot-password",
+        name: "ForgotPassword",
+        component: ForgotPassword,
     },
     {
         path: "/:pathMatch(.*)*",
