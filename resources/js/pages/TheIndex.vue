@@ -84,11 +84,10 @@
                                 rick-rolling your friends 😆
                             </p>
                         </div>
-                        <div class="flex flex-wrap -m-2">
-                            <div
-                                v-for="item in items"
-                                class="w-full p-2 lg:w-1/3 md:w-1/2"
-                            >
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -m-2"
+                        >
+                            <div v-for="item in items" class="w-full p-2">
                                 <div
                                     class="flex items-center h-full p-4 break-all transition-all bg-gray-500 rounded-lg shadow-lg cursor-auto hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
                                 >
@@ -103,10 +102,10 @@
                                         <a
                                             :href="pretty_url(item.short_url)"
                                             target="_blank"
-                                            class="flex items-start gap-2 my-3"
+                                            class="flex items-center gap-2 my-3"
                                         >
                                             <p
-                                                class="font-bold leading-3 text-primary"
+                                                class="font-bold leading-6 text-primary"
                                             >
                                                 {{ pretty_url(item.short_url) }}
                                             </p>
@@ -133,7 +132,7 @@
                                         >
                                             <!-- Meta -->
                                             <p
-                                                class="flex flex-shrink-0 gap-2 font-medium text-right text-gray-500 talic space-bet"
+                                                class="flex flex-shrink-0 gap-2 font-medium text-right text-gray-500 italic space-between"
                                             >
                                                 <span
                                                     v-if="item.visits > 0"
