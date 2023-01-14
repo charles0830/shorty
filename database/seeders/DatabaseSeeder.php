@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // First create the admin
+        User::factory()->admin()->create();
+
+        // Then generate fake urls related to that admin 
         $this->call([
             UrlSeeder::class,
         ]);

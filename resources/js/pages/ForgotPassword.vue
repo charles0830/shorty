@@ -25,7 +25,7 @@
                             type="email"
                             id="email"
                             class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
-                            placeholder="Enter email"
+                            placeholder="Enter your email address"
                             required
                         />
                     </div>
@@ -33,7 +33,7 @@
 
                 <button
                     type="submit"
-                    class="block w-full rounded-lg bg-primary hover:bg-secondary transition-all px-5 py-3 text-lg font-medium text-white"
+                    class="block w-full rounded-lg bg-primary active:opacity-50 hover:bg-secondary transition-all px-5 py-3 text-lg font-medium text-white"
                 >
                     Send Password Reset Link
                 </button>
@@ -51,15 +51,33 @@
 
 <script>
 export default {
+    middleware: "guest",
     data() {
         return {
             form: {
                 email: "",
             },
+
+            errors: [],
         };
     },
     methods: {
-        resetPassword() {},
+        resetPassword() {
+            axios
+                .post("/password/email", this.form)
+                .then((res) => {
+                    this.$notify({
+                        type: "success",
+                        text: res.data.message,
+                    });
+                })
+                .catch((err) => {
+                    this.$notify({
+                        type: "error",
+                        text: err.response.data.message,
+                    });
+                });
+        },
     },
 };
 </script>

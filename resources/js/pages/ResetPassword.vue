@@ -8,12 +8,11 @@
             </h1>
 
             <p class="mx-auto mt-4 max-w-md text-center text-gray-300">
-                Hey 👋🏼 buddy! Listen, login to your account now so that you can
-                manage all your shorten links more securly!
+                You're almost there! Now set a new password for your account 🔑
             </p>
 
             <form
-                @submit.prevent="login"
+                @submit.prevent="resetPassword"
                 class="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl bg-gray-800"
             >
                 <div>
@@ -26,7 +25,7 @@
                             id="email"
                             class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-lg text-gray-300 shadow-sm"
                             placeholder="Enter email"
-                            required
+                            disabled
                         />
                     </div>
                 </div>
@@ -48,31 +47,37 @@
                     </div>
                 </div>
 
-                <router-link
-                    class="text-primary font-semibold block text-right hover:underline"
-                    :to="{ name: 'ForgotPassword' }"
-                    >Forgot Password?</router-link
-                >
+                <div class="col-span-6 sm:col-span-3">
+                    <label
+                        for="PasswordConfirmation"
+                        class="block text-md font-medium text-gray-300"
+                    >
+                        Password Confirmation
+                    </label>
+
+                    <input
+                        type="password"
+                        id="PasswordConfirmation"
+                        name="password_confirmation"
+                        v-model="form.password_confirmation"
+                        class="mt-1 w-full rounded-md border-t-gray-500 border-transparent bg-gray-700 text-md text-gray-300 shadow-sm"
+                        placeholder="********"
+                        required
+                    />
+                </div>
 
                 <button
                     type="submit"
                     class="block w-full rounded-lg bg-primary hover:bg-secondary transition-all px-5 py-3 text-lg font-medium text-white"
                 >
-                    Sign In
+                    Reset Password
                 </button>
-
-                <p class="text-center text-sm text-gray-400">
-                    No account?
-                    <router-link class="text-primary" to="/signup"
-                        >Sign Up</router-link
-                    >
-                </p>
             </form>
         </div>
     </div>
 </template>
 
-<script type="js">
+<script>
 export default {
     middleware: "guest",
     data() {
@@ -80,21 +85,27 @@ export default {
             form: {
                 email: "",
                 password: "",
+                password_confirmation: "",
+                token: "",
             },
         };
     },
 
+    mounted() {
+        this.form.email = this.$route.query.email;
+        this.form.token = this.$route.params.token;
+    },
+
     methods: {
-        login() {
+        resetPassword() {
             axios
-                .post("/login", this.form)
-                .then(() => {
-                    // First redirect then notify
-                    window.location = "/";
+                .post("/reset-password", this.form)
+                .then((res) => {
                     this.$notify({
-                        text: "Great! Welcome Back 👋🏼",
+                        text: "Your password reset successfully!",
                         type: "success",
                     });
+                    window.location = "/";
                 })
                 .catch((err) => {
                     this.$notify({
@@ -106,5 +117,3 @@ export default {
     },
 };
 </script>
-
-<style></style>

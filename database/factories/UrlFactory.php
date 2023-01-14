@@ -18,7 +18,7 @@ class UrlFactory extends Factory
     public function definition()
     {
         return [
-            "user_id" => User::factory()->create(),
+            "user_id" => 1,
             "real_url" => fake()->url(),
             "visits" => fake()->numberBetween(0, 9999),
         ];

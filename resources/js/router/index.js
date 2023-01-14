@@ -3,6 +3,7 @@ import TheIndex from "../pages/TheIndex.vue";
 import Login from "../pages/Login.vue";
 import Signup from "../pages/Signup.vue";
 import ForgotPassword from "../pages/ForgotPassword.vue";
+import ResetPassword from "../pages/ResetPassword.vue";
 import NotFound from "../pages/404.vue";
 
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
         path: "/forgot-password",
         name: "ForgotPassword",
         component: ForgotPassword,
+    },
+    {
+        path: "/password/reset/:token",
+        name: "ResetPassword",
+        component: ResetPassword,
     },
     {
         path: "/:pathMatch(.*)*",
