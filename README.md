@@ -22,14 +22,14 @@ Switch to the repo folder
 cd shorty
 ```
 
-Install all the dependencies using composer and npm
+Install all the dependencies using composer and npm.
 
 ```bash
 composer install
 ```
 
 ```bash
-npm install
+npm install --force
 ```
 
 Copy the `.env.example` file and make the required configuration changes in the .env file
@@ -138,6 +138,10 @@ php artisan migrate:refresh
 
 **Database:** Sqlite 3
 
+
+## Known Issue
+
+**Please be advised that whenever you'll try to update the repo or install a new npm package using ***npm*** then always use --force flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
 
 ## Support
 
