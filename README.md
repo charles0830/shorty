@@ -141,7 +141,7 @@ php artisan migrate:refresh
 
 ## Known Issue
 
-**Please be advised that whenever you'll try to update the repo or install a new npm package using ***npm*** then always use --force flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
+**Please be advised that whenever you'll try to update the repo or install a new npm package using ***npm*** then always use `--force` flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
 
 ## Support
 
