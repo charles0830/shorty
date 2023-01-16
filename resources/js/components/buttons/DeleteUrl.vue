@@ -1,6 +1,6 @@
 <template>
     <button
-        class="p-1 text-center transition rounded hover:bg-gray-700 text-red-600/60 hover:text-red-600 transition-all"
+        class="p-1 text-center rounded hover:bg-gray-700 text-red-600/60 hover:text-red-600 transition-all"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
