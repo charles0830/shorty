@@ -67,7 +67,7 @@
 
                 <!-- The result -->
                 <section
-                    v-if="items.length > 0"
+                    v-if="items.data.length > 0"
                     class="text-gray-600 body-font"
                 >
                     <div class="container px-5 py-24 mx-auto">
@@ -87,7 +87,7 @@
                         <div
                             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -m-2"
                         >
-                            <div v-for="item in items" class="w-full p-2">
+                            <div v-for="item in items.data" class="w-full p-2">
                                 <div
                                     class="flex items-center h-full p-4 break-all transition-all bg-gray-500 rounded-lg shadow-lg cursor-auto hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
                                 >
@@ -185,6 +185,69 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Pagination -->
+                        <div class="my-4">
+                            <ol
+                                class="flex justify-center items-center gap-3 text-sm text-gray-300 font-semibold"
+                            >
+                                <!-- Previous Button -->
+                                <li>
+                                    <button
+                                        @click="prev"
+                                        class="inline-flex h-8 w-8 items-center justify-center rounded border-transparent"
+                                        :class="[
+                                            items.current_page === 1
+                                                ? 'text-white border-primary bg-primary'
+                                                : 'border-y-gray-500 border-y bg-gray-700',
+                                        ]"
+                                    >
+                                        <span class="sr-only">Prev Page</span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </button>
+                                </li>
+                                <li><p class="text-gray-300">Page {{ items.current_page }} of {{ items.last_page }}</p></li>
+
+                                <!-- Next Button -->
+                                <li>
+                                    <button
+                                        @click="next"
+                                        class="inline-flex h-8 w-8 items-center justify-center rounded border-transparent"
+                                        :class="[
+                                            items.current_page ===
+                                            items.last_page
+                                                ? 'text-white border-primary bg-primary'
+                                                : 'border-y-gray-500 border-y bg-gray-700',
+                                        ]"
+                                    >
+                                        <span class="sr-only">Next Page</span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-3 w-3"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </button>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -202,33 +265,18 @@ export default {
         return {
             url: "",
             errors: {},
-            items: [],
+            items: {
+                data: [],
+            },
         };
     },
 
     props: {},
 
     methods: {
-        shorten() {
-            // Store the url using axios
+        fetchData(page = 1) {
             axios
-                .post("urls", { real_url: this.url })
-                .then((res) => {
-                    this.url = ""; // reset the input field
-                    this.items.unshift(res.data); // collect shortened urls in 'items'
-                    this.$notify({
-                        text: "The URL shortened successfully!",
-                        type: "success",
-                    });
-                })
-                .catch((err) => {
-                    this.errors = err.response.data.errors;
-                });
-        },
-
-        fetchData() {
-            axios
-                .get("urls")
+                .get(`urls?page=${page}`)
                 .then((res) => {
                     this.items = res.data;
                 })
@@ -263,6 +311,45 @@ export default {
                         }
                     });
             }
+        },
+
+        next() {
+            let nextPage = this.items.current_page + 1;
+
+            // Don't do anything if the user is already on the last page
+            if (this.items.current_page === this.items.last_page) return false;
+
+            this.fetchData(nextPage);
+
+            return true;
+        },
+
+        prev() {
+            let prevPage = this.items.current_page - 1;
+
+            // Don't do anything if the user is already on the first page
+            if (this.items.current_page === 0) return false;
+
+            this.fetchData(prevPage);
+
+            return true;
+        },
+
+        shorten() {
+            // Store the url using axios
+            axios
+                .post("urls", { real_url: this.url })
+                .then((res) => {
+                    this.url = ""; // reset the input field
+                    this.items.unshift(res.data); // collect shortened urls in 'items'
+                    this.$notify({
+                        text: "The URL shortened successfully!",
+                        type: "success",
+                    });
+                })
+                .catch((err) => {
+                    this.errors = err.response.data.errors;
+                });
         },
 
         copyToClipboard(text) {

@@ -16,9 +16,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        return auth()->user()->urls;
-        // return Url::latest()
-        //     ->get(['id', 'real_url', 'short_url', 'visits', 'created_at']);
+        return auth()->user()->urls()->paginate(15);
     }
 
 

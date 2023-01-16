@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function urls()
     {
-        return $this->hasMany(Url::class)->latest();
+        return $this->hasMany(Url::class)->latest()->select(['id', 'real_url', 'short_url', 'visits', 'created_at']);
     }
 }
