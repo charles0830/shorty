@@ -288,6 +288,7 @@ export default {
             axios
                 .get(`urls?page=${page}`)
                 .then((res) => {
+                    this.$router.replace({ query: { page: page } });
                     this.items = res.data;
                 })
                 .catch((err) => {
@@ -338,7 +339,7 @@ export default {
             let prevPage = this.items.current_page - 1;
 
             // Don't do anything if the user is already on the first page
-            if (this.items.current_page === 0) return false;
+            if (this.items.current_page === 1) return false;
 
             this.fetchData(prevPage);
 
@@ -372,7 +373,7 @@ export default {
     computed: {},
 
     mounted() {
-        this.fetchData();
+        this.fetchData(this.$route.query.page);
     },
 
     components: {
