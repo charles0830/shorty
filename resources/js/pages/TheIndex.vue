@@ -128,23 +128,12 @@
                                         </a>
 
                                         <div
-                                            class="flex items-center justify-between gap-3 mt-4"
+                                            class="flex items-center justify-between gap-3 mt-4 flex-wrap"
                                         >
                                             <!-- Meta -->
                                             <p
                                                 class="flex flex-shrink-0 gap-2 font-medium text-right text-gray-500 italic space-between items-center"
                                             >
-                                                <!-- Copy To Clipboard button -->
-                                                <CopyToClipboard
-                                                    @click="
-                                                        copyToClipboard(
-                                                            pretty_url(
-                                                                item.short_url
-                                                            )
-                                                        )
-                                                    "
-                                                ></CopyToClipboard>
-
                                                 <span
                                                     v-if="item.visits > 0"
                                                     class="flex gap-1 pr-2 border-r border-r-gray-700"
@@ -176,10 +165,26 @@
                                                 {{ item.created_at }}
                                             </p>
 
-                                            <!-- Delete button -->
-                                            <DeleteUrl
-                                                @click="destroy(item)"
-                                            ></DeleteUrl>
+                                            <!-- Action Buttons -->
+                                            <div
+                                                class="flex items-center gap-1"
+                                            >
+                                                <!-- Copy To Clipboard button -->
+                                                <CopyToClipboard
+                                                    @click="
+                                                        copyToClipboard(
+                                                            pretty_url(
+                                                                item.short_url
+                                                            )
+                                                        )
+                                                    "
+                                                ></CopyToClipboard>
+
+                                                <!-- Delete button -->
+                                                <DeleteUrl
+                                                    @click="destroy(item)"
+                                                ></DeleteUrl>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +222,12 @@
                                         </svg>
                                     </button>
                                 </li>
-                                <li><p class="text-gray-300">Page {{ items.current_page }} of {{ items.last_page }}</p></li>
+                                <li>
+                                    <p class="text-gray-300">
+                                        Page {{ items.current_page }} of
+                                        {{ items.last_page }}
+                                    </p>
+                                </li>
 
                                 <!-- Next Button -->
                                 <li>
@@ -341,7 +351,7 @@ export default {
                 .post("urls", { real_url: this.url })
                 .then((res) => {
                     this.url = ""; // reset the input field
-                    this.items.unshift(res.data); // collect shortened urls in 'items'
+                    this.items.data.unshift(res.data); // collect shortened urls in 'items'
                     this.$notify({
                         text: "The URL shortened successfully!",
                         type: "success",
