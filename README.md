@@ -1,6 +1,6 @@
 <!-- Preview Image -->
 
-[!Alt Text](preview.png)
+[!Shorty](preview.png)
 
 # Shorty — Vue & Laravel Powered URL Shortener
 
