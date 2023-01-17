@@ -304,6 +304,11 @@ export default {
     props: {},
 
     methods: {
+        /**
+         * Fetch urls data from API based on page number
+         * provided by Laravel pagination meta info
+         * @param {int} page
+         */
         fetchData(page = 1) {
             axios
                 .get(`urls?page=${page}`)
