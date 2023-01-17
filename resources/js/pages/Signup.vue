@@ -148,9 +148,11 @@ export default {
                         type: "success",
                     });
                 })
-                .catch(() => {
+                .catch((err) => {
+                    // Display an error from the message bag
+                    console.log();
                     this.$notify({
-                        text: "Something went wrong!",
+                        text: err.response.data.message,
                         type: "error",
                     });
                 });

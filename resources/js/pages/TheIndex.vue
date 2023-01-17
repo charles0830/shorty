@@ -317,7 +317,9 @@ export default {
                     .delete(`urls/${item.short_url}`)
                     .then(() => {
                         // filter out the deleted item from "items" and display toast
-                        this.items = this.items.filter((i) => i.id !== item.id);
+                        this.items.data = this.items.data.filter(
+                            (i) => i.id !== item.id
+                        );
                         this.$notify({
                             text: "The shortened URL has been deleted!",
                         });
@@ -338,6 +340,7 @@ export default {
             }
         },
 
+        // Paginate to next page
         next() {
             let nextPage = this.items.current_page + 1;
 
@@ -349,6 +352,7 @@ export default {
             return true;
         },
 
+        // Return to previous page
         prev() {
             let prevPage = this.items.current_page - 1;
 
@@ -360,6 +364,7 @@ export default {
             return true;
         },
 
+        // Send AJAX request to store and shorten the provided url
         shorten() {
             // Store the url using axios
             axios
@@ -383,8 +388,6 @@ export default {
                 : this.$notify("Oh the misery! Everybody wants to be my enemy");
         },
     },
-
-    computed: {},
 
     mounted() {
         this.fetchData(this.$route.query.page);
