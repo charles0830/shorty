@@ -206,7 +206,7 @@
                         </div>
 
                         <!-- Pagination -->
-                        <div class="my-4">
+                        <div class="my-4" v-if="items.last_page > 1">
                             <ol
                                 class="flex justify-center items-center gap-3 text-sm text-gray-300 font-semibold"
                             >
