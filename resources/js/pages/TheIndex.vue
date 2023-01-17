@@ -21,36 +21,7 @@
                     </p>
 
                     <!-- URL Shortener Form -->
-                    <form
-                        @submit.prevent="shorten"
-                        class="flex items-end justify-center w-full"
-                    >
-                        <div
-                            class="relative w-2/4 mr-4 text-left lg:w-full xl:w-1/2 md:w-full"
-                        >
-                            <label
-                                for="long-url"
-                                class="text-sm font-semibold leading-10 text-gray-200"
-                                >Your long Url</label
-                            >
-                            <input
-                                type="url"
-                                required
-                                id="long-url"
-                                name="url"
-                                v-model="url"
-                                class="w-full px-4 py-3 text-lg leading-8 transition duration-200 ease-in-out bg-gray-700 border-transparent rounded-md shadow-2xl outline-none font-medium placeholder:text-gray-400 border-y focus:border border-t-gray-600 focus:ring-2 focus:ring-primary focus:bg-transparent focus:border-primary"
-                                placeholder="https://yoursite.com/this-is-a-very-large-url-but-boring-and-it-stinks-yaak?query=true&isItFun=false"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="inline-flex flex-shrink-0 px-6 py-4 text-lg font-semibold text-white transition border-0 rounded bg-secondary focus:outline-none hover:bg-secondary hover:brightness-50"
-                        >
-                            Shorten URL
-                        </button>
-                    </form>
+                    <UrlForm />
 
                     <p
                         v-if="errors.real_url"
@@ -84,138 +55,20 @@
                                 rick-rolling your friends 😆
                             </p>
                         </div>
+
+                        <!-- Url Cards -->
                         <div
                             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -m-2"
                         >
-                            <div v-for="item in items.data" class="w-full p-2">
-                                <div
-                                    class="flex items-center h-full p-4 break-all transition-all bg-gray-500 rounded-lg shadow-lg cursor-auto hover:bg-gray-800 hover:bg-opacity-20 bg-opacity-20 backdrop-blur-sm"
-                                >
-                                    <div class="flex-grow">
-                                        <a :href="item.real_url"
-                                            ><h2
-                                                class="font-medium text-gray-200 title-font"
-                                            >
-                                                <span class="hidden md:block">
-                                                    {{
-                                                        // hidden on small screens
-                                                        excerpt(
-                                                            item.real_url,
-                                                            29
-                                                        )
-                                                    }}
-                                                </span>
-                                                <span class="md:hidden">
-                                                    {{
-                                                        // visible on small screens
-                                                        excerpt(item.real_url)
-                                                    }}
-                                                </span>
-                                            </h2></a
-                                        >
-                                        <a
-                                            :href="prettyUrl(item.short_url)"
-                                            target="_blank"
-                                            class="flex items-center gap-2 my-3"
-                                        >
-                                            <p
-                                                class="font-bold leading-6 text-primary"
-                                            >
-                                                {{
-                                                    freshUrl(
-                                                        prettyUrl(
-                                                            item.short_url
-                                                        )
-                                                    )
-                                                }}
-                                            </p>
-                                            <span
-                                                ><svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke-width="2"
-                                                    stroke="currentColor"
-                                                    class="w-4 h-4 text-secondary"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                                                    />
-                                                </svg>
-                                            </span>
-                                        </a>
-
-                                        <div
-                                            class="flex items-center justify-between gap-3 mt-4 flex-wrap"
-                                        >
-                                            <!-- Meta -->
-                                            <p
-                                                class="flex flex-shrink-0 gap-2 font-medium text-right text-gray-500 italic space-between items-center"
-                                            >
-                                                <span
-                                                    v-if="item.visits > 0"
-                                                    class="flex gap-1 pr-2 border-r border-r-gray-700"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke-width="1.5"
-                                                        stroke="currentColor"
-                                                        class="w-6 h-6"
-                                                    >
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                                                        />
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                                        />
-                                                    </svg>
-
-                                                    <strong>{{
-                                                        item.visits.toLocaleString()
-                                                    }}</strong>
-                                                </span>
-                                                {{ item.created_at }}
-                                            </p>
-
-                                            <!-- Action Buttons -->
-                                            <div
-                                                class="flex items-center gap-1"
-                                            >
-                                                <!-- Copy To Clipboard button -->
-                                                <CopyToClipboard
-                                                    @click="
-                                                        copyToClipboard(
-                                                            prettyUrl(
-                                                                item.short_url
-                                                            )
-                                                        )
-                                                    "
-                                                ></CopyToClipboard>
-
-                                                <!-- Delete button -->
-                                                <DeleteUrl
-                                                    @click="destroy(item)"
-                                                ></DeleteUrl>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <UrlCard
+                                :items="items.data"
+                                @destroy="destroy"
+                            ></UrlCard>
                         </div>
 
                         <!-- Pagination -->
                         <ThePagination
                             :items="items"
-                            @next="next"
-                            @prev="prev"
                         />
                     </div>
                 </section>
@@ -224,8 +77,8 @@
     </div>
 </template>
 <script>
-import CopyToClipboard from "../components/buttons/CopyToClipBoard.vue";
-import DeleteUrl from "../components/buttons/DeleteUrl.vue";
+import UrlForm from "../components/UrlForm.vue";
+import UrlCard from "../components/UrlCard.vue";
 import ThePagination from "../components/ThePagination.vue";
 
 export default {
@@ -258,7 +111,14 @@ export default {
                     this.items = res.data;
                 })
                 .catch((err) => {
-                    this.errors = err.response.data.errors;
+                    if (err.hasOwnProperty("response")) {
+                        // Validation Errors
+                        this.errors = err.response.data.errors;
+                    } else {
+                        // Axios/Server Errors
+                        this.errors = err.message;
+                        this.$notify({ type: "error", text: err.message });
+                    }
                 });
         },
 
@@ -297,33 +157,11 @@ export default {
             }
         },
 
-        // Paginate to next page
-        next() {
-            let nextPage = this.items.current_page + 1;
-
-            // Don't do anything if the user is already on the last page
-            if (this.items.current_page === this.items.last_page) return false;
-
-            this.fetchData(nextPage);
-
-            return true;
-        },
-
-        // Return to previous page
-        prev() {
-            let prevPage = this.items.current_page - 1;
-
-            // Don't do anything if the user is already on the first page
-            if (this.items.current_page === 1) return false;
-
-            this.fetchData(prevPage);
-
-            return true;
-        },
 
         // Send AJAX request to store and shorten the provided URL
-        shorten() {
+        shorten(url) {
             // Store the url using axios
+            this.url = url;
             axios
                 .post("urls", { real_url: this.url })
                 .then((res) => {
@@ -335,7 +173,14 @@ export default {
                     });
                 })
                 .catch((err) => {
-                    this.errors = err.response.data.errors;
+                    if (err.hasOwnProperty("response")) {
+                        // Validation Errors
+                        this.errors = err.response.data.errors;
+                    } else {
+                        // Axios/Server Errors
+                        this.errors = err.message;
+                        this.$notify({ type: "error", text: err.message });
+                    }
                 });
         },
     },
@@ -345,8 +190,8 @@ export default {
     },
 
     components: {
-        CopyToClipboard,
-        DeleteUrl,
+        UrlForm,
+        UrlCard,
         ThePagination,
     },
 };

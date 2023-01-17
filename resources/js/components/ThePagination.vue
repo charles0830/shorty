@@ -6,7 +6,7 @@
             <!-- Previous Button -->
             <li>
                 <button
-                    @click="$emit('prev')"
+                    @click="prev"
                     class="inline-flex h-8 w-8 items-center justify-center rounded border-transparent"
                     :class="[
                         items.current_page === 1
@@ -39,7 +39,7 @@
             <!-- Next Button -->
             <li>
                 <button
-                    @click="$emit('next')" 
+                    @click="next"
                     class="inline-flex h-8 w-8 items-center justify-center rounded border-transparent"
                     :class="[
                         items.current_page === items.last_page
@@ -74,11 +74,28 @@ export default {
     },
 
     methods: {
+        // Paginate to next page
         next() {
-            this.$emit("next");
+            let nextPage = this.items.current_page + 1;
+
+            // Don't do anything if the user is already on the last page
+            if (this.items.current_page === this.items.last_page) return false;
+
+            this.$parent.fetchData(nextPage);
+
+            return true;
         },
+
+        // Return to previous page
         prev() {
-            this.$emit("prev");
+            let prevPage = this.items.current_page - 1;
+
+            // Don't do anything if the user is already on the first page
+            if (this.items.current_page === 1) return false;
+
+            this.$parent.fetchData(prevPage);
+
+            return true;
         },
     },
 };

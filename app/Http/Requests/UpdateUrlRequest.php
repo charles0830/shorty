@@ -38,7 +38,7 @@ class UpdateUrlRequest extends FormRequest
     public function messages()
     {
         return [
-            'real_url.required' => 'Come one! at least give a URL bruh!',
+            'real_url.required' => 'Come on! at least give a URL bruh!',
             'real_url.url' => 'Are you sure it\'s a URL?',
         ];
     }
