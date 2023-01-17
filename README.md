@@ -96,7 +96,7 @@ composer install
 ```
 
 ```bash
-npm install
+npm install --force
 ```
 
 ```bash
