@@ -96,7 +96,21 @@
                                             ><h2
                                                 class="font-medium text-gray-200 title-font"
                                             >
-                                                {{ excerpt(item.real_url) }}
+                                                <span class="hidden md:block">
+                                                    {{
+                                                        // hidden on small screens
+                                                        excerpt(
+                                                            item.real_url,
+                                                            29
+                                                        )
+                                                    }}
+                                                </span>
+                                                <span class="md:hidden">
+                                                    {{
+                                                        // visible on small screens
+                                                        excerpt(item.real_url)
+                                                    }}
+                                                </span>
                                             </h2></a
                                         >
                                         <a
