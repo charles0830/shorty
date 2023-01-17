@@ -6,7 +6,16 @@
 
 As the name suggests, Shorty shrinks your looooong boring URLs to pretty short URLs with ease! It's Vue and Laravel powered simple web application.
 
-## Installation
+## Features
+
+-   Login/Registration
+-   Shorten Long URLs
+-   Copy/Delete URLs
+-   View creation date and number of link **visits count**
+-   Single Page Application/SPA feels around
+-   more coming soon
+
+### Installation
 
 Please check the [Laravel Official Documentation](https://laravel.com/docs/master/installation) installation guide for server requirements before you start.
 
@@ -130,7 +139,7 @@ Note : It's recommended to have a clean database before seeding. You can refresh
 php artisan migrate:refresh
 ```
 
-## Tech Stack
+### Tech Stack
 
 **Client Side:** TailwindCSS, Vue 3
 
@@ -138,16 +147,16 @@ php artisan migrate:refresh
 
 **Database:** Sqlite 3
 
-## TODO
+### TODO
 
 -   Add profile feature
 -   Use Gates & Policy to authorize
 -   Maybe provide analytical data on profile/dashboard
 
-## Known Issue
+## Known Issues
 
 **Please be advised that whenever you'll try to update the repo or install a new npm package using \***npm**\* then always use `--force` flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
 
-## Support
+#### Support
 
 For support, [contact me](https://alnahian2003.github.io#contact) or pull an issue.
