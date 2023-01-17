@@ -33,11 +33,11 @@ cd shorty
 
 Install all the dependencies using composer and npm.
 
-**_Use `--force` at end of the command, because there are some issues with the versioning of some Vite and Vue related packages_**
-
 ```bash
 composer install
 ```
+
+**_Please use `--force` at end of the command, because there are some issues with the versioning of some Vite and Vue related packages._** Trust me, this project has nothing to with this confliction. So, just avoid those npm related **Warnings**.
 
 ```bash
 npm install --force
