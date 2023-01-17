@@ -33,6 +33,8 @@ cd shorty
 
 Install all the dependencies using composer and npm.
 
+**_Use `--force` at end of the command, because there are some issues with the versioning of some Vite and Vue related packages_**
+
 ```bash
 composer install
 ```
@@ -51,12 +53,6 @@ Generate a new application key
 
 ```bash
 php artisan key:generate
-```
-
-Create a symbolic link from `public/storage` to `storage/app/public`
-
-```bash
-php artisan storage:link
 ```
 
 Run the database migrations (Set the database connection in .env before migrating)
@@ -105,10 +101,6 @@ cp .env.example .env
 
 ```bash
 php artisan key:generate
-```
-
-```bash
-php artisan storage:link
 ```
 
 ```bash
