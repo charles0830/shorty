@@ -8,7 +8,7 @@ As the name suggests, Shorty shrinks your looooong boring URLs to pretty short U
 
 ## Features
 
--   Login/Registration
+-   Login/Registration, Reset Password
 -   Shorten Long URLs
 -   Copy/Delete URLs
 -   View creation date and number of link **visits count**
