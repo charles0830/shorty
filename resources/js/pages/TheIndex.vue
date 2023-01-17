@@ -39,7 +39,7 @@
                                 id="long-url"
                                 name="url"
                                 v-model="url"
-                                class="w-full px-4 py-3 text-lg leading-8 transition duration-200 ease-in-out bg-gray-700 border-transparent rounded-md shadow-2xl outline-none placeholder:text-gray-400 border-y focus:border border-t-gray-600 focus:ring-2 focus:ring-primary focus:bg-transparent focus:border-primary"
+                                class="w-full px-4 py-3 text-lg leading-8 transition duration-200 ease-in-out bg-gray-700 border-transparent rounded-md shadow-2xl outline-none font-medium placeholder:text-gray-400 border-y focus:border border-t-gray-600 focus:ring-2 focus:ring-primary focus:bg-transparent focus:border-primary"
                                 placeholder="https://yoursite.com/this-is-a-very-large-url-but-boring-and-it-stinks-yaak?query=true&isItFun=false"
                             />
                         </div>
@@ -70,7 +70,7 @@
                     v-if="items.data.length > 0"
                     class="text-gray-600 body-font"
                 >
-                    <div class="container px-5 py-24 mx-auto">
+                    <div class="container px-5 pt-16 mx-auto">
                         <div class="flex flex-col w-full mb-10 text-center">
                             <h2
                                 class="mb-4 text-2xl font-bold text-primary sm:text-5xl title-font"
@@ -212,7 +212,7 @@
                         </div>
 
                         <!-- Pagination -->
-                        <div class="my-4" v-if="items.last_page > 1">
+                        <div class="my-8" v-if="items.last_page > 1">
                             <ol
                                 class="flex justify-center items-center gap-3 text-sm text-gray-300 font-semibold"
                             >
