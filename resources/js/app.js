@@ -25,13 +25,43 @@ app.use(router);
 // Make the excerpt method available globally
 app.mixin({
     methods: {
+        /**
+         * Returns limited length of strings that ends with '...'
+         * @param {string} str
+         * @param {int} limit
+         * @returns {string} "lorem ipsum dolor sit..."
+         */
         excerpt(str, limit = 37) {
             return str.length > limit ? str.slice(0, limit) + "..." : str;
         },
 
-        // return the shortened url code with base url joined
-        pretty_url(short_url) {
-            return `${window.location.origin}/u/${short_url}`;
+        /**
+         * Return the shortened url code with base url joined
+         * @param {string} shortUrl
+         * @returns {string} http://shorty.test/u/{shortUrl}
+         */
+        prettyUrl(shortUrl) {
+            return `${window.location.origin}/u/${shortUrl}`;
+        },
+
+        /**
+         * Removes 'https://', 'http://', 'ftp://' etc protocol from a URL
+         * @param {string} urlWithProtocol
+         * @returns {string} example.com
+         */
+        freshUrl(urlWithProtocol) {
+            return urlWithProtocol.replace(/(^\w+:|^)\/\//, "");
+        },
+
+        /**
+         * Copies a provided text to user clipboard. But this
+         * requires clipboard access from browser.
+         * @param {string} text
+         */
+        copyToClipboard(text) {
+            return navigator.clipboard.writeText(text)
+                ? this.$notify("Short URL copied to clipboard")
+                : this.$notify("Oh the misery! Everybody wants to be my enemy");
         },
     },
 });

@@ -114,14 +114,20 @@
                                             </h2></a
                                         >
                                         <a
-                                            :href="pretty_url(item.short_url)"
+                                            :href="prettyUrl(item.short_url)"
                                             target="_blank"
                                             class="flex items-center gap-2 my-3"
                                         >
                                             <p
                                                 class="font-bold leading-6 text-primary"
                                             >
-                                                {{ pretty_url(item.short_url) }}
+                                                {{
+                                                    freshUrl(
+                                                        prettyUrl(
+                                                            item.short_url
+                                                        )
+                                                    )
+                                                }}
                                             </p>
                                             <span
                                                 ><svg
@@ -187,7 +193,7 @@
                                                 <CopyToClipboard
                                                     @click="
                                                         copyToClipboard(
-                                                            pretty_url(
+                                                            prettyUrl(
                                                                 item.short_url
                                                             )
                                                         )
@@ -310,6 +316,11 @@ export default {
                 });
         },
 
+        /**
+         * Send a DELETE/PATCH request to the server
+         * then remove the item from items object on success
+         * @param {object} item
+         */
         destroy(item) {
             if (confirm("Are you sure bruh?")) {
                 // send the delete request
@@ -364,7 +375,7 @@ export default {
             return true;
         },
 
-        // Send AJAX request to store and shorten the provided url
+        // Send AJAX request to store and shorten the provided URL
         shorten() {
             // Store the url using axios
             axios
@@ -380,12 +391,6 @@ export default {
                 .catch((err) => {
                     this.errors = err.response.data.errors;
                 });
-        },
-
-        copyToClipboard(text) {
-            return navigator.clipboard.writeText(text)
-                ? this.$notify("Short URL copied to clipboard")
-                : this.$notify("Oh the misery! Everybody wants to be my enemy");
         },
     },
 
