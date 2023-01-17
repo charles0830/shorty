@@ -138,10 +138,15 @@ php artisan migrate:refresh
 
 **Database:** Sqlite 3
 
+## TODO
+
+-   Add profile feature
+-   Use Gates & Policy to authorize
+-   Maybe provide analytical data on profile/dashboard
 
 ## Known Issue
 
-**Please be advised that whenever you'll try to update the repo or install a new npm package using ***npm*** then always use `--force` flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
+**Please be advised that whenever you'll try to update the repo or install a new npm package using \***npm**\* then always use `--force` flag at end of the command. This repo has some conflicts with versioning problem of vite and laravel.**
 
 ## Support
 
