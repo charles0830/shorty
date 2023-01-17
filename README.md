@@ -152,6 +152,7 @@ php artisan migrate:refresh
 -   Add profile feature
 -   Use Gates & Policy to authorize
 -   Maybe provide analytical data on profile/dashboard
+-   Use Eloquent API Resource instead of Controllers for APIs
 
 ## Known Issues
 
