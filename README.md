@@ -133,10 +133,17 @@ Run the database seeder, and this will do it!
 php artisan db:seed
 ```
 
-Note : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+The seed data includes a demo user with associated urls. Here are the credentials:
 
 ```bash
-php artisan migrate:refresh
+email: admin@admin.com
+password: password
+```
+
+Note : It's recommended to have a clean database before seeding. You can fresh your tables at any point to clean the database by running the following command
+
+```bash
+php artisan migrate:fresh
 ```
 
 ### Tech Stack
