@@ -22,7 +22,7 @@ Please check the [Laravel Official Documentation](https://laravel.com/docs/maste
 First, clone this repo
 
 ```bash
-git clone https://github.com/alnahian2003/shorty.git
+git clone https://github.com/charles0830/shorty.git
 ```
 
 Switch to the repo folder
@@ -80,7 +80,7 @@ npm run dev
 All the command list
 
 ```bash
-git clone https://github.com/alnahian2003/shorty.git
+git clone https://github.com/charles0830/shorty.git
 ```
 
 ```bash
@@ -159,4 +159,4 @@ php artisan migrate:fresh
 
 #### Support
 
-For support, [contact me](https://alnahian2003.github.io#contact) or pull an issue.
+For support, [contact me](https://charles0830.github.io) or pull an issue.
